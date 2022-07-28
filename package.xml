@@ -26,14 +26,14 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ros_platformstats</name>
+  <name>ros_xlnx_platformstats</name>
   <version>1.0.0</version>
-  <description>ROS wrapper for platformstats utility</description>
+  <description>ROS wrapper for xlnx_platformstats utility</description>
   <maintainer email="vishal.patel@amd.com">Vishal Patel</maintainer>
   <license>MIT</license>
 
   <depend>rclpy</depend>
-  <depend>platformstats</depend>
+  <depend>xlnx_platformstats</depend>
 
   <export>
     <build_type>ament_python</build_type>

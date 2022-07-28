@@ -1,7 +1,7 @@
-# ROS2 Platformstats Wrapper
+# ROS2 xlnx_platformstats Wrapper
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-ROS2 wrapper for the [platformstats](https://github.com/Xilinx/platformstats) utility which prints stats via diagnostic messages.
+ROS2 wrapper for the [xlnx_platformstats](https://github.com/Xilinx/xlnx_platformstats) utility which prints stats via diagnostic messages.
 
 ## Install
 - Install ROS2 as described in [ROS2 Documentation](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
@@ -15,8 +15,8 @@ sudo apt install python3-colcon-common-extensions
 ```
 
 ### Install dependencies
-Install platformstats:  
-See [platformstats](https://github.com/Xilinx/platformstats) README  
+Install xlnx_platformstats:  
+See [xlnx_platformstats](https://github.com/Xilinx/xlnx_platformstats) README  
 Install RQt:
 ```
 sudo apt install ros-humble-rqt*
@@ -34,7 +34,7 @@ cd workspace
 git clone
 
 # Build
-colcon build --packages-select ros_platformstats
+colcon build --packages-select ros_xlnx_platformstats
 
 # Add the built application to current environment
 source install/local_setup.sh
@@ -44,13 +44,13 @@ source install/local_setup.sh
 ## Run Instructions
 
 1. Source ROS environment e.g `source /opt/ros/humble/setup.sh`
-2. Run Publisher in the background: `ros2 run ros_platformstats publisher &`
+2. Run Publisher in the background: `ros2 run ros_xlnx_platformstats publisher &`
 3. Open Runtime Monitor: `ros2 run rqt_runtime_monitor rqt_runtime_monitor`
 
 ![rqt_runtime_monitor](.github/rqt_runtime_monitor.gif)
 
 4. (Alternate) The stats can also be viewed in the terminal by running the
-subscriber node: `ros2 run ros_platformstats subscriber`
+subscriber node: `ros2 run ros_xlnx_platformstats subscriber`
 
 ![subscriber_output](.github/subscriber_output.gif)
 

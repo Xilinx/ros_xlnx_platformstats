@@ -24,7 +24,7 @@
 
 from setuptools import setup
 
-package_name = 'ros_platformstats'
+package_name = 'ros_xlnx_platformstats'
 
 setup(
     name=package_name,
@@ -39,12 +39,12 @@ setup(
     zip_safe=True,
     maintainer='Vishal Patel',
     maintainer_email='vishal.patel@amd.com',
-    description='ROS wrapper for platformstats utility',
+    description='ROS wrapper for xlnx_platformstats utility',
     license='MIT',
     entry_points={
         'console_scripts': [
-            'publisher = ros_platformstats.platformstats_publisher:main',
-            'subscriber = ros_platformstats.platformstats_subscriber:main',
+            'publisher = ros_xlnx_platformstats.xlnx_platformstats_publisher:main',
+            'subscriber = ros_xlnx_platformstats.xlnx_platformstats_subscriber:main',
         ],
     },
 )

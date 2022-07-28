@@ -29,10 +29,10 @@ from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus, KeyValue
 
 from std_msgs.msg import String
 
-class PlatformstatsSubscriber(Node):
+class XlnxPlatformstatsSubscriber(Node):
 
     def __init__(self):
-        super().__init__('platformstats_subscriber')
+        super().__init__('xlnx_platformstats_subscriber')
         self.subscription = self.create_subscription(
             DiagnosticArray,
             'diagnostics',
@@ -50,11 +50,11 @@ class PlatformstatsSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    platformstats_subscriber = PlatformstatsSubscriber()
+    xlnx_platformstats_subscriber = XlnxPlatformstatsSubscriber()
 
-    rclpy.spin(platformstats_subscriber)
+    rclpy.spin(xlnx_platformstats_subscriber)
 
-    platformstats_subscriber.destroy_node()
+    xlnx_platformstats_subscriber.destroy_node()
     rclpy.shutdown()
 
 

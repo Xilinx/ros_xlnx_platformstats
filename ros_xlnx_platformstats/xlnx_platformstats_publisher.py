@@ -27,13 +27,13 @@ from rclpy.node import Node
 from diagnostic_msgs.msg import DiagnosticArray, DiagnosticStatus, KeyValue
 
 from std_msgs.msg import String
-from platformstats import platformstats
+from xlnx_platformstats import xlnx_platformstats
 
-class PlatformstatsPublisher(Node):
+class XlnxPlatformstatsPublisher(Node):
 
     def __init__(self):
         self.arr = DiagnosticArray()
-        super().__init__('platformstats_publisher')
+        super().__init__('xlnx_platformstats_publisher')
         self.publisher_ = self.create_publisher(DiagnosticArray, 'diagnostics', 10)
         timer_period = 1  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
@@ -41,7 +41,7 @@ class PlatformstatsPublisher(Node):
 
 
     def timer_callback(self):
-        self.ram_util = platformstats.get_ram_memory_utilization()
+        self.ram_util = xlnx_platformstats.get_ram_memory_utilization()
         msg = DiagnosticStatus(
             name='RAM Utilization: MemTotal',
             message='{memtotal} kB'.format(memtotal=self.ram_util[1])
@@ -58,7 +58,7 @@ class PlatformstatsPublisher(Node):
         )
         self.arr.status += [msg]
 
-        self.cpu_util = platformstats.get_cpu_utilization()
+        self.cpu_util = xlnx_platformstats.get_cpu_utilization()
         for cpu in range(len(self.cpu_util)):
             msg = DiagnosticStatus(
                 name='CPU Utilization: CPU{num}'.format(num=cpu),
@@ -66,7 +66,7 @@ class PlatformstatsPublisher(Node):
             )
             self.arr.status += [msg]
 
-        self.swap_util = platformstats.get_swap_memory_utilization()
+        self.swap_util = xlnx_platformstats.get_swap_memory_utilization()
         msg = DiagnosticStatus(
             name='Swap Memory Utilization: SwapTotal',
             message='{swaptotal} kB'.format(swaptotal=self.swap_util[1])
@@ -78,7 +78,7 @@ class PlatformstatsPublisher(Node):
         )
         self.arr.status += [msg]
 
-        self.cma_util = platformstats.get_cma_utilization()
+        self.cma_util = xlnx_platformstats.get_cma_utilization()
         msg = DiagnosticStatus(
             name='CMA Memory Utilization: CmaTotal',
             message='{cmatotal} kB'.format(cmatotal=self.cma_util[1])
@@ -90,7 +90,7 @@ class PlatformstatsPublisher(Node):
         )
         self.arr.status += [msg]
 
-        self.temp = platformstats.get_temperatures()
+        self.temp = xlnx_platformstats.get_temperatures()
         msg = DiagnosticStatus(
             name='Temperature (LPD)',
             message='{lpdtemp:0.1f} C'.format(lpdtemp=self.temp[1]/1000)
@@ -107,7 +107,7 @@ class PlatformstatsPublisher(Node):
         )
         self.arr.status += [msg]
 
-        self.volt = platformstats.get_voltages()
+        self.volt = xlnx_platformstats.get_voltages()
         msg = DiagnosticStatus(
             name='Voltage: VCC_PSPLL',
             message='{voltage} mV'.format(voltage=self.volt[1])
@@ -154,14 +154,14 @@ class PlatformstatsPublisher(Node):
         )
         self.arr.status += [msg]
 
-        self.curr = platformstats.get_current()
+        self.curr = xlnx_platformstats.get_current()
         msg = DiagnosticStatus(
             name='Total Current',
             message='{curr} mV'.format(curr=self.curr[1])
         )
         self.arr.status += [msg]
 
-        self.power = platformstats.get_power()
+        self.power = xlnx_platformstats.get_power()
         msg = DiagnosticStatus(
             name='Total Power',
             message='{pwr} mV'.format(pwr=self.power[1]//1000)
@@ -172,14 +172,14 @@ class PlatformstatsPublisher(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    platformstats.init()
+    xlnx_platformstats.init()
 
-    platformstats_publisher = PlatformstatsPublisher()
+    xlnx_platformstats_publisher = XlnxPlatformstatsPublisher()
 
-    rclpy.spin(platformstats_publisher)
+    rclpy.spin(xlnx_platformstats_publisher)
 
-    platformstats_publisher.destroy_node()
-    platformstats.deinit()
+    xlnx_platformstats_publisher.destroy_node()
+    xlnx_platformstats.deinit()
     rclpy.shutdown()
 
 
