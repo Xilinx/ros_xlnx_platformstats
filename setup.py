@@ -35,7 +35,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'xlnx_platformstats'],
     zip_safe=True,
     maintainer='Vishal Patel',
     maintainer_email='vishal.patel@amd.com',
