@@ -9,7 +9,7 @@ ROS2 wrapper for the [xlnx_platformstats](https://github.com/Xilinx/xlnx_platfor
 ## Install from deb file
 - Install xlnx_platformstats and RQt:
 ```
-sudo apt install xlnx_platformstats
+sudo apt install xlnx-platformstats
 sudo apt install ros-humble-rqt*
 ```
 - Download the .deb file from the [Release Assets](https://github.com/Xilinx/ros_xlnx_platformstats/releases) to ~/Downloads.
@@ -45,7 +45,7 @@ sudo apt install python3-colcon-common-extensions
 ### Install dependencies
 Install xlnx_platformstats:
 ```
-sudo apt install xlnx_platformstats
+sudo apt install xlnx-platformstats
 ```
 See [xlnx_platformstats](https://github.com/Xilinx/xlnx_platformstats) README for more info
 
